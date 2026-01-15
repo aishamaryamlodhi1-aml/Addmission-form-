@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* HERO BACKGROUND */
+.hero {
+    min-height: 100vh;
+    background: url("/media/image\ 1.jpeg") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    text-align: center;
+    color: white;
+}
+
+/* GLASS NAVBAR */
+.glass-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0 0 16px 16px;
+    transition: all 0.3s ease; /* smooth animation */
+    z-index: 1000;
+}
+
+/* SHRINK NAVBAR ON SCROLL */
+.glass-navbar.shrink {
+    padding: 8px 40px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+}
+
+/* NAV LEFT */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 45px;
+    transition: all 0.3s ease; /* smooth scaling */
+}
+/* BUTTON ANIMATION */
+.admission-btn {
+    position: relative;
+    padding: 10px 24px;
+    background: linear-gradient(135deg,  rgba(10, 38, 71, 0.85) ,  #2c94a0);
+    color: rgb(250, 245, 245);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.admission-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-20deg);
+    transition: all 0.5s ease;
+}
+
+.admission-btn:hover::before {
+    left: 200%;
+}
+
+.admission-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px  rgba(48, 118, 197, 0.85);
+}
+@media (max-width: 768px) {
+
+    .glass-navbar {
+        margin: 10px;
+        padding: 12px 20px;
+         padding: 10px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .college-name {
+        font-size: 18px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .logo {
+        width: 40px;
+    }
+
+    .admission-btn {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+}
+.hero-form {
+  position: relative;
+  height: 50vh; /* half screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* BACKGROUND IMAGE + BLUR */
+.hero-form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/media/img\ 4.jpeg")
+    center / cover no-repeat;
+  filter: blur(6px);
+  transform: scale(1.1);
+  z-index: -2;
+}
+
+/* DARK OVERLAY */
+.hero-form::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 38, 71, 0.65);
+  z-index: -1;
+}
+
+/* TEXT */
+.hero-form h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
+  animation: fadeUp 1s ease;
+}
+
+.hero-form p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #e0f6f8;
+  animation: fadeUp 1.2s ease;
+}
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-form {
+    height: 60vh;
+  }
+
+  .hero-form h1 {
+    font-size: 30px;
+  }
+
+  .hero-form p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 26px;
+  }
+}
+
+/* COMMON */
+.section-title {
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 50px;
+  color: rgb(19, 18, 18);
+}
+
+/* PROGRAM SECTION */
+.program-section {
+  padding: 70px 20px;
+  background: #f7f9fb;
+}
+
+.program-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.program-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 35px 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+
+.program-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.program-card p {
+  color: #8d8989;
+}
+
+.program-card:hover {
+  transform: translateY(-10px);
+}
+
+/* DATES SECTION */
+.dates-section {
+  padding: 80px 20px;
+  /* background: #0c2c34; */
+  color: #131111;
+}
+
+.dates-box {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.date-item {
+  background: rgba(180, 175, 175, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.date-item h4 {
+  color: #1f7a82;
+  margin-bottom: 12px;
+}
+
+.date-item:hover {
+  transform: translateY(-8px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .program-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dates-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .program-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+}
+
+.admission-section {
+  padding: 90px 20px;
+  /* background: linear-gradient(135deg, #f4f7f9, #eef2f4); */
+    background: linear-gradient(
+        rgba(10, 38, 71, 0.85),
+        rgba(10, 38, 71, 0.95)
+    );
+}
+
+.admission-section h2 {
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.admission-section .subtitle {
+  text-align: center;
+  color: #bebaba;
+  margin-bottom: 50px;
+}
+
+/* FORM */
+.admission-form {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #f5f0f0;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s ease;
+  background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1f7a82;
+  box-shadow: 0 0 0 3px rgba(31, 122, 130, 0.15);
+}
+
+/* BUTTON */
+.form-group button {
+  padding: 16px;
+  border-radius: 40px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  /* background: linear-gradient(135deg, #2fb7c0, #1f7a82); */
+   background: linear-gradient(135deg,  rgba(10, 38, 71, 0.85) ,  #2c94a0);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.form-group button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* FULL WIDTH */
+.full-width {
+  grid-column: span 2;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .admission-form {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .admission-section h2 {
+    font-size: 30px;
+  }
+}
+
+    </style>
+</head>
+<body>
+      <!-- Navbar -->
+   <header class="glass-navbar">
+    <div class="nav-left">
+        <img src="/media/logo.png" alt="Logo" class="logo">
+        <!-- <span class="college-name">ABC College</span> -->
+    </div>
+
+    <a href="/form.html" class="admission-btn">Admissions Open</a>
+</header>
+
+<section class="hero-form">
+  <h1>FG Degree College Hyderabad <br>Admissions</h1>
+  <p>Delivering Quality Education & Building Future Leaders</p>
+  <!-- <a href="#admission" class="hero-btn">Admissions Open</a> -->
+</section>
+
+<!-- PROGRAMS -->
+<section class="program-section">
+  <h2 class="section-title" style="color: black;">Choose Your Program</h2>
+
+  <div class="program-grid">
+    <div class="program-card">
+      <h3>Hyderabad Board (FSc)</h3>
+      <p>Secure your place in our esteemed intermediate program affiliated with the Hyderabad Board.
+        We focus pn academic excellence to prepare you for future success.</p>
+    </div>
+
+    <div class="program-card">
+      <h3>Federal Board (FA,FSc)</h3>
+      <p>Join our nationally recognized Federal Board program.
+        Our comprehensive curriculum is designed to foster
+        critical thinking and intellectual growth.
+      </p>
+    </div>
+
+    <div class="program-card">
+      <h3>BS Computer Science</h3>
+      <p>Enroll in our 4-year degree program affiliated with the National University of Pakistan.
+        Gain hands-on experience and skills for the tech industry.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DATES AND DEADLINE -->
+
+<section class="dates-section">
+  <h2 class="section-title">Dates & Deadlines</h2>
+
+  <div class="dates-box">
+    <div class="date-item">
+      <h4>Admissions Open</h4>
+      <p>
+        Hyderabad Board, Federal Board,<br>
+        and BS Computer Science programs.
+      </p>
+    </div>
+
+    <div class="date-item">
+      <h4>Commencement of Classes</h4>
+      <p>
+        Tentatively scheduled for <strong>August 2025</strong>.<br>
+        Please check back for exact dates.
+      </p>
+    </div>
+
+    <div class="date-item">
+      <h4>End of Session</h4>
+      <p>
+        As per board and university<br>
+        academic calendars.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr>
+<section class="admission-section" id="admission">
+  <div class="container">
+
+    <h2 style="color: white;">Admission Form</h2>
+    <p class="subtitle">
+      Fill in the form below to apply for admission. Our team will contact you shortly.
+    </p>
+
+    <form class="admission-form">
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Enter first name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Enter last name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="03XX-XXXXXXX" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <select required>
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" placeholder="Enter city" required>
+      </div>
+
+      <div class="form-group">
+        <label>CNIC / B-Form</label>
+        <input type="text" placeholder="XXXXX-XXXXXXX-X" required>
+      </div>
+
+      <div class="form-group">
+        <label>Apply For Program</label>
+        <select required>
+          <option value="">Select Program</option>
+          <option>Intermediate (FA, FSc)</option>
+          <option>BS Computer Science</option>
+          <option>BS English</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Matriculation Percentage</label>
+        <input type="number" placeholder="e.g. 75" required>
+      </div>
+
+      
+      <div class="form-group">
+        <label>Year of Matriculation</label>
+        <input type="text" placeholder="" required>
+      </div>
+
+      
+
+      <div class="form-group full-width">
+        <button type="submit">Submit Application</button>
+      </div>
+
+    </form> 
+  
+
+  </div>
+</section>
+
+
+
+</body>
+</html>
